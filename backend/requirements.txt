@@ -1,0 +1,103 @@
+# Core dependencies
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+gunicorn==21.2.0
+pydantic==2.5.3
+pydantic-settings==2.1.0
+
+# Security
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-multipart==0.0.6
+cryptography==42.0.0
+pyopenssl==24.0.0
+certifi==2024.2.2
+
+# Database
+sqlalchemy==2.0.25
+alembic==1.13.1
+aiosqlite==0.19.0
+redis==5.0.1
+
+# Async support
+asyncio-mqtt==0.16.1
+aioredis==2.0.1
+websockets==12.0
+
+# System monitoring
+psutil==5.9.8
+py-cpuinfo==9.0.0
+gpustat==1.1.1
+pySMART==1.3.0
+lm-sensors-py==0.1.0
+
+# Network
+netifaces==0.11.0
+scapy==2.5.0
+speedtest-cli==2.1.3
+python-nmap==0.7.1
+
+# Docker
+docker==7.0.0
+docker-compose==1.29.2
+
+# SSH/Remote
+paramiko==3.4.0
+fabric==3.2.2
+
+# File operations
+watchdog==3.0.0
+pyinotify==0.9.6
+
+# Logs and metrics
+prometheus-client==0.19.0
+influxdb-client==1.40.0
+elasticsearch==8.12.0
+
+# Notifications
+requests==2.31.0
+httpx==0.26.0
+apprise==1.7.0
+
+# Scheduling
+APScheduler==3.10.4
+celery==5.3.6
+
+# Email
+fastapi-mail==1.4.1
+
+# SMS/Twilio
+twilio==8.12.0
+
+# Backup
+boto3==1.34.34
+azure-storage-blob==12.19.0
+google-cloud-storage==2.14.0
+rclone-python==0.1.8
+
+# Charts/Data visualization
+plotly==5.18.0
+matplotlib==3.8.2
+
+# Utilities
+python-dotenv==1.0.0
+pyyaml==6.0.1
+jinja2==3.1.3
+click==8.1.7
+typer==0.9.0
+rich==13.7.0
+tqdm==4.66.1
+humanize==4.9.0
+arrow==1.3.0
+python-dateutil==2.8.2
+pytz==2024.1
+
+# Testing
+pytest==8.0.0
+pytest-asyncio==0.23.4
+httpx==0.26.0
+
+# Development
+black==24.1.1
+flake8==7.0.0
+mypy==1.8.0

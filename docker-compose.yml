@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  ubuntu-master-control:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: umc-server
+    privileged: true
+    pid: host
+    network_mode: host
+    volumes:
+      - /:/host:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/run/dbus:/var/run/dbus
+      - /run/systemd:/run/systemd
+      - /sys:/sys:ro
+      - /proc:/proc:ro
+      - /dev:/dev
+      - /etc:/etc:ro
+      - /home:/home
+      - /root:/root
+      - umc-data:/app/data
+      - umc-logs:/app/logs
+      - umc-backups:/app/backups
+    environment:
+      - HOST_HOSTNAME=${HOSTNAME}
+      - UMC_ADMIN_USER=${UMC_ADMIN_USER:-admin}
+      - UMC_ADMIN_PASSWORD=${UMC_ADMIN_PASSWORD:-changeme}
+      - UMC_PORT=${UMC_PORT:-8443}
+      - UMC_ENABLE_SSL=${UMC_ENABLE_SSL:-true}
+      - UMC_TIMEZONE=${UMC_TIMEZONE:-UTC}
+      - UMC_LANGUAGE=${UMC_LANGUAGE:-en}
+      - NODE_ENV=production
+    ports:
+      - "${UMC_PORT:-8443}:8443"
+      - "${UMC_HTTP_PORT:-8080}:8080"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    labels:
+      - "com.ubuntu-master-control.description=Ubuntu Master Control - Complete Server Management"
+      - "com.ubuntu-master-control.version=1.0.0"
+
+volumes:
+  umc-data:
+    driver: local
+  umc-logs:
+    driver: local
+  umc-backups:
+    driver: local

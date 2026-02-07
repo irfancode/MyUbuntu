@@ -1,0 +1,11 @@
+# UMC Scheduled Tasks
+# Cron jobs for Ubuntu Master Control
+
+# Cleanup old backups daily at 2 AM
+0 2 * * * /usr/local/bin/python3 /app/backend/scripts/cleanup_backups.py >> /var/log/umc/cleanup.log 2>&1
+
+# Check for updates weekly
+0 3 * * 0 /usr/local/bin/python3 /app/backend/scripts/check_updates.py >> /var/log/umc/updates.log 2>&1
+
+# Generate daily report
+0 6 * * * /usr/local/bin/python3 /app/backend/scripts/daily_report.py >> /var/log/umc/reports.log 2>&1
